@@ -20,9 +20,18 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
+    void on_action_6_triggered();
+
+    void newm();
+
+    void on_action_3_triggered();
+
 private:
     Ui::MainWindow *ui;
     second *sWindow;
+    QString currentFile;
 };
 
 #endif // MAINWINDOW_H
