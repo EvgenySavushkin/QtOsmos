@@ -24,9 +24,16 @@ private slots:
 
     void on_action_6_triggered();
 
-    void newm();
-
     void on_action_3_triggered();
+
+    void on_action_2_triggered();
+
+    void on_action_triggered();
+
+signals:
+    void newm();
+    void savem(QString);
+    void openm(QString);
 
 private:
     Ui::MainWindow *ui;

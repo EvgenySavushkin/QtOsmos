@@ -24,6 +24,17 @@ private slots:
 
     void exit_l();
 
+    void savem(QString);
+
+    void openm(QString);
+
+    void newm();
+
+    void newm_le();
+
+    void savm_l();
+
+    void opem_l();
 
     void newm_l();
 
@@ -62,7 +73,9 @@ private slots:
     void on_lineEdit_13_textChanged(const QString &arg1);
 
 signals:
-    void newm();
+    void newme_l();
+    void savme_l();
+    void opeme_l();
 
 private:
     Ui::second *ui;

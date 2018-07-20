@@ -6,6 +6,8 @@
 #include <QMessageBox>
 #include <QLineEdit>
 #include "mainwindow.h"
+#include <QFileDialog>
+#include <QTextStream>
 
 
 second::second(QWidget *parent) :
@@ -22,10 +24,11 @@ second::second(QWidget *parent) :
     QMenu *fileMenu = new QMenu("Файл");
     menuBar->addMenu(fileMenu);
     QAction *newm = fileMenu->addAction("Новый");
-    connect(newm,SIGNAL(triggered()),this,SLOT(newm_l()));
-    fileMenu->addAction("Открыть");
-    fileMenu->addAction("Сохранить");
-    fileMenu->addAction("Печать");
+    connect(newm,SIGNAL(triggered()),this,SLOT(newm_le()));
+    QAction *opem = fileMenu->addAction("Открыть");
+    connect(opem,SIGNAL(triggered()),this,SLOT(opem_l()));
+    QAction *savm = fileMenu->addAction("Сохранить");
+    connect(savm,SIGNAL(triggered()),this,SLOT(savm_l()));
     fileMenu->addSeparator();
     QAction *exit = fileMenu->addAction("Выход");
     connect(exit, SIGNAL(triggered()), this, SLOT(exit_l()));
@@ -94,6 +97,21 @@ void second::katsum(void)
 
 }
 
+void second::opem_l()
+{
+    emit opeme_l();
+}
+
+void second::newm_l()
+{
+    emit newme_l();
+}
+
+void second::savm_l()
+{
+    emit savme_l();
+}
+
 void second::anisum(void)
 {
     double ani= ui->lineEdit_16->text().toDouble()+ui->lineEdit_7->text().toDouble()+ui->lineEdit_18->text().toDouble()+ui->lineEdit_14->text().toDouble()+ui->lineEdit_20->text().toDouble()+ui->lineEdit_19->text().toDouble()+ui->lineEdit_13->text().toDouble();
@@ -142,13 +160,134 @@ void second::exit_l()
     QCoreApplication::quit();
 }
 
-void second::newm_l()
+void second::newm_le()
 {
 
-    this->hide();
-    emit  newm();
+   // this->hide();
+    emit  newme_l();
 
 //  Parent->Show();
+}
+
+
+void second::newm()
+{
+    ui->lineEdit_41->setText("7.0");
+    ui->lineEdit->setText("0.0");
+    ui->lineEdit_26->setText("0.0");
+    ui->lineEdit_3->setText("0.0");
+    ui->lineEdit_28->setText("0.0");
+    ui->lineEdit_2->setText("0.0");
+    ui->lineEdit_21->setText("0.0");
+    ui->lineEdit_6->setText("0.0");
+    ui->lineEdit_24->setText("0.0");
+    ui->lineEdit_9->setText("0.0");
+    ui->lineEdit_30->setText("0.0");
+    ui->lineEdit_8->setText("0.0");
+    ui->lineEdit_29->setText("0.0");
+    ui->lineEdit_4->setText("0.0");
+    ui->lineEdit_23->setText("0.0");
+    ui->lineEdit_5->setText("0.0");
+    ui->lineEdit_27->setText("0.0");
+    ui->lineEdit_11->setText("0.0");
+    ui->lineEdit_25->setText("0.0");
+    ui->lineEdit_16->setText("0.0");
+    ui->lineEdit_36->setText("0.0");
+    ui->lineEdit_7->setText("0.0");
+    ui->lineEdit_31->setText("0.0");
+    ui->lineEdit_18->setText("0.0");
+    ui->lineEdit_38->setText("0.0");
+    ui->lineEdit_14->setText("0.0");
+    ui->lineEdit_34->setText("0.0");
+    ui->lineEdit_20->setText("0.0");
+    ui->lineEdit_40->setText("0.0");
+    ui->lineEdit_19->setText("0.0");
+    ui->lineEdit_39->setText("0.0");
+    ui->lineEdit_13->setText("0.0");
+    ui->lineEdit_33->setText("0.0");
+    ui->lineEdit_22->setText("0.0");
+    ui->lineEdit_37->setText("0.0");
+    ui->lineEdit_32->setText("0.0");
+
+
+}
+
+void second::openm(QString a)
+{
+
+    QFile file(a);
+    if (!file.open(QIODevice::ReadOnly | QFile::Text)) {
+        QMessageBox::warning(this, "Warning", "Cannot open file: " + file.errorString());
+        return;
+    }
+    QTextStream in(&file);
+    for (int i=0;i<6;i++) in.readLine();
+
+
+    QString text = in.readLine();
+    ui->lineEdit->setText(text);
+    text = in.readLine();
+    ui->lineEdit_3->setText(text);
+    text = in.readLine();
+    ui->lineEdit_2->setText(text);
+    text = in.readLine();
+    ui->lineEdit_6->setText(text);
+    text = in.readLine();
+    ui->lineEdit_9->setText(text);
+    text = in.readLine();
+    ui->lineEdit_8->setText(text);
+    text = in.readLine();
+    ui->lineEdit_4->setText(text);
+    text = in.readLine();
+    ui->lineEdit_5->setText(text);
+    text = in.readLine();
+    ui->lineEdit_11->setText(text);
+    text = in.readLine();
+    ui->lineEdit_16->setText(text);
+    text = in.readLine();
+    ui->lineEdit_7->setText(text);
+    text = in.readLine();
+    ui->lineEdit_18->setText(text);
+    text = in.readLine();
+    ui->lineEdit_14->setText(text);
+    text = in.readLine();
+    ui->lineEdit_20->setText(text);
+    text = in.readLine();
+    ui->lineEdit_19->setText(text);
+    text = in.readLine();
+    ui->lineEdit_13->setText(text);
+    file.close();
+}
+
+void second::savem(QString a)
+{
+
+    QString fileName = a;
+
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Append|QFile::Text)) {
+        QMessageBox::warning(this, "Warning", "Cannot save file: " + file.errorString());
+        return;
+    }
+
+    QTextStream out(&file);
+    out<<ui->lineEdit->text()<<endl\
+    <<ui->lineEdit_3->text()<<endl\
+    <<ui->lineEdit_2->text()<<endl\
+    <<ui->lineEdit_6->text()<<endl\
+    <<ui->lineEdit_9->text()<<endl\
+    <<ui->lineEdit_8->text()<<endl\
+    <<ui->lineEdit_4->text()<<endl\
+    <<ui->lineEdit_5->text()<<endl;
+    out<<ui->lineEdit_11->text()<<endl;
+    out<<ui->lineEdit_16->text()<<endl;
+    out<<ui->lineEdit_7->text()<<endl;
+    out<<ui->lineEdit_18->text()<<endl;
+    out<<ui->lineEdit_14->text()<<endl;
+    out<<ui->lineEdit_20->text()<<endl;
+    out<<ui->lineEdit_19->text()<<endl;
+    out<<ui->lineEdit_13->text()<<endl;
+    file.close();
 }
 
 void second::on_lineEdit_3_textChanged(const QString &arg1)
