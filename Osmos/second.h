@@ -86,6 +86,7 @@ private:
     void katsum(void);
     void anisum(void);
     void totsum(void);
+    void paintGR(void);
 
 
 };
