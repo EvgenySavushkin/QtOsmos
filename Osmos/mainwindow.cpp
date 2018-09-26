@@ -3,6 +3,10 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QTextStream>
+#include <QPrinter>
+#include <QAbstractPrintDialog>
+#include <QPrintDialog>
+#include <QPainter>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,7 +20,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(sWindow,SIGNAL( opeme_l()),this,SLOT( on_action_2_triggered()));
     connect(this,SIGNAL( openm(QString)),sWindow,SLOT( openm(QString)));
     connect(this,SIGNAL( newm()),sWindow,SLOT( newm()));
-
+    connect(sWindow,SIGNAL(back_l()),this, SLOT(b()));
+    connect(sWindow,SIGNAL( pechme_l()),this,SLOT( on_action_4_triggered()));
+    connect(this,SIGNAL( pechm(QString)),sWindow,SLOT( pechm(QString)));
 }
 
 
@@ -31,7 +37,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_2_clicked()
 {
     sWindow->show();
-    //this->hide();
+    this->hide();
 
 
 }
@@ -85,7 +91,7 @@ void MainWindow::on_action_3_triggered()
          out<<ui->lineEdit_2->text()<<endl;
          out<<ui->lineEdit_3->text()<<endl;
          out<<ui->comboBox->currentText()<<endl;
-         out<<ui->lineEdit_4->text()<<endl;
+         out<<"---"<<endl;
          out<<ui->dateEdit->text()<<endl;
 
         file.close();
@@ -112,7 +118,7 @@ void MainWindow::on_action_2_triggered()
         text = in.readLine();
         ui->comboBox->setCurrentText(text);
         text = in.readLine();
-        ui->lineEdit_4->setText(text);
+        //ui->lineEdit_4->setText(text);
         text = in.readLine();
         QDate date= QDate::fromString(text);
         ui->dateEdit->setDate(date);
@@ -125,8 +131,35 @@ void MainWindow::on_action_triggered()
     ui->lineEdit->setText("");
     ui->lineEdit_2->setText("");
     ui->lineEdit_3->setText("");
-    ui->lineEdit_4->setText("");
+    //ui->lineEdit_4->setText("");
     this->show();
     currentFile ="";
     emit newm();
+}
+
+void MainWindow::b()
+{
+    this->show();
+}
+
+void MainWindow::on_action_4_triggered()
+{
+
+
+    /*
+     QPrinter printer(QPrinter::HighResolution);
+     printer.setPageSize(QPrinter::A4);
+     printer.setOrientation(QPrinter::Portrait);
+     printer.setPageMargins (15,15,15,15,QPrinter::Millimeter);
+     printer.setFullPage(false);
+     //printer.setOutputFileName("output.pdf");
+     printer.setOutputFormat(QPrinter::NativeFormat);
+    */
+     QString a;
+     a = "Проект:  "+ ui->lineEdit->text() + ';' +"Фамилия Имя Отчество:  "+ ui->lineEdit_2->text()  + ';'+"Поток:  " + ui->lineEdit_3->text() + " М3/ч"+';'+"Тип мембраны:  " + ui->comboBox->currentText() + ';'+"Дата:  " + ui->dateEdit->text();
+
+
+
+     //painter.end();
+     emit pechm(a);
 }

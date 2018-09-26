@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <second.h>
+#include <QPrinter>
 namespace Ui {
 class MainWindow;
 }
@@ -17,6 +18,7 @@ public:
 
 
 
+
 private slots:
     void on_pushButton_clicked();
 
@@ -28,14 +30,19 @@ private slots:
 
     void on_action_3_triggered();
 
+    void b();
+
     void on_action_2_triggered();
 
     void on_action_triggered();
+
+    void on_action_4_triggered();
 
 signals:
     void newm();
     void savem(QString);
     void openm(QString);
+    void pechm(QString);
 
 private:
     Ui::MainWindow *ui;

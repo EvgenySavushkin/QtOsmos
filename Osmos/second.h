@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <third.h>
 #include <QMainWindow>
+#include <QPrinter>
 
 namespace Ui {
 class second;
@@ -35,6 +36,10 @@ private slots:
     void savm_l();
 
     void opem_l();
+
+    void pechm(QString);
+
+    void pechm_l();
 
     void newm_l();
 
@@ -72,10 +77,26 @@ private slots:
 
     void on_lineEdit_13_textChanged(const QString &arg1);
 
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_lineEdit_43_textChanged(const QString &arg1);
+
+    void on_doubleSpinBox_valueChanged(double arg1);
+
+    void on_doubleSpinBox_valueChanged(const QString &arg1);
+
+    void on_spinBox_3_valueChanged(int arg1);
+
+    void on_spinBox_3_valueChanged(const QString &arg1);
+
 signals:
     void newme_l();
     void savme_l();
     void opeme_l();
+    void back_l();
+    void pechme_l();
 
 private:
     Ui::second *ui;
@@ -87,6 +108,7 @@ private:
     void anisum(void);
     void totsum(void);
     void paintGR(void);
+    void IonPower(void);
 
 
 };

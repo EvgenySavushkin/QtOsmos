@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>618</width>
-    <height>663</height>
+    <height>670</height>
    </rect>
   </property>
   <widget class="QLabel" name="label_26">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>610</y>
+     <x>450</x>
+     <y>480</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -212,14 +212,14 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>320</y>
+     <x>520</x>
+     <y>640</y>
      <width>75</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
-    <string>OK</string>
+    <string>&lt;-- назад</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
@@ -349,10 +349,10 @@
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>460</y>
+     <x>440</x>
+     <y>510</y>
      <width>171</width>
-     <height>141</height>
+     <height>81</height>
     </rect>
    </property>
    <property name="title">
@@ -371,41 +371,11 @@
      <string>pH</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_41">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>20</y>
-      <width>51</width>
-      <height>16</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>8</x>
-      <y>40</y>
-      <width>141</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Коррекция</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Без коррекции</string>
-     </property>
-    </item>
-   </widget>
    <widget class="QLabel" name="label_30">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>100</y>
+      <y>60</y>
       <width>47</width>
       <height>13</height>
      </rect>
@@ -418,7 +388,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
+      <y>40</y>
       <width>47</width>
       <height>13</height>
      </rect>
@@ -431,7 +401,7 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>80</y>
+      <y>40</y>
       <width>51</width>
       <height>16</height>
      </rect>
@@ -444,13 +414,35 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>100</y>
+      <y>60</y>
       <width>51</width>
       <height>16</height>
      </rect>
     </property>
     <property name="readOnly">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>10</y>
+      <width>51</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <double>3.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>11.990000000000000</double>
+    </property>
+    <property name="singleStep">
+     <double>0.050000000000000</double>
+    </property>
+    <property name="value">
+     <double>7.000000000000000</double>
     </property>
    </widget>
   </widget>
@@ -593,16 +585,6 @@
    </property>
    <property name="readOnly">
     <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_15">
-   <property name="geometry">
-    <rect>
-     <x>530</x>
-     <y>610</y>
-     <width>51</width>
-     <height>16</height>
-    </rect>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_22">
@@ -941,6 +923,26 @@
       <height>22</height>
      </rect>
     </property>
+    <item>
+     <property name="text">
+      <string>Аминат К</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Аминат ОД-1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Аметек РО-1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Аметек РО-2</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLineEdit" name="lineEdit_12">
     <property name="geometry">
@@ -990,6 +992,52 @@
    </property>
    <property name="text">
     <string>Обработка антискалантом</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>640</y>
+     <width>141</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Уравновесить йоны</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinBox_2">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>480</y>
+     <width>51</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_31">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>450</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Степень извлечения</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinBox_3">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>450</y>
+     <width>51</width>
+     <height>22</height>
+    </rect>
    </property>
   </widget>
  </widget>
