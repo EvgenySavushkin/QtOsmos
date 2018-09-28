@@ -28,10 +28,13 @@ private slots:
     void on_pushButton_2_clicked();
     // cлот выполняемый при завершении запроса:
     void replyFinished();
+    void replyFinished2();
 
 
+    void readResponse (QNetworkReply  *);
 
 
+    void on_pushButton_3_clicked();
 
 private:
     Ui::MainWindow *ui;
